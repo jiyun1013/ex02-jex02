@@ -13,7 +13,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Board Register</div>
+			<div class="panel-heading">Board Modify Page</div>
 			<!-- end panel-heading -->
 			<div class="panel-body">
 				<form role="form" action="/board/modify" method="post">
@@ -27,8 +27,8 @@
 					</div>
 					<div class="form-group">
 						<label>Text area</label>
-						<textarea class="form-control" rows="3" name='content'>
-                  <c:out value="${board.content}" /></textarea>
+						<textarea class="form-control" rows="3" name='content'><c:out
+								value="${board.content}" /></textarea>
 					</div>
 					<div class="form-group">
 						<label>Writer</label> <input class="form-control" name='writer'
@@ -59,25 +59,26 @@
 <!-- /.row -->
 
 <script type="text/javascript">
-$(document).ready(function(){
-   var formObj = $("form");
-   
-   $('button').on("click", function(e){
-      e.preventDefault();
-      
-   var operation = $(this).data("oper");
-   
-   console.log(operation);
-   
-   if(operation === 'remove'){
-      formObj.attr("action", "/board/remove");
-   }else if(operation === 'list'){
-      //move to list
-      self.location="/board/list";
-      return;
-   }
-   formObj.submit();
-   });   
-});
+	$(document).ready(function() {
+
+		var formObj = $("form");
+
+		$('button').on("click", function(e) {
+			e.preventDefault();
+
+			var operation = $(this).data("oper");
+
+			console.log(operation);
+
+			if (operation === 'remove') {
+				formObj.attr("action", "/board/remove");
+			} else if (operation === 'list') {
+				//move to list
+				formObj.attr("action", "/board/list").attr("method", "get");
+				formObj.empty();
+			}
+			formObj.submit();
+		});
+	});
 </script>
 <%@ include file="../includes/footer.jsp"%>
