@@ -16,6 +16,8 @@ PRIMARY key(bno)
 
 INSERT INTO tbl_board (bno, title, content, writer) VALUES (seq_board.nextval, '테스트 제목', '테스트 내용', 'user00')
 
-SELECT * FROM tbl_board
+SELECT * FROM tbl_board ORDER BY BNO desc
 
 ALTER SEQUENCE seq_board nocache
+
+INSERT INTO tbl_board (bno, title, content, writer) VALUES (seq_board.nextval, '테스트 제목', trim('테스트 내용        '), 'user00')
